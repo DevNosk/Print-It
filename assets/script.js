@@ -17,6 +17,10 @@ const slides = [
 	}
 ]
 
+let index_slides = 0
+let banner = document.getElementById("banner")
+let tagLine = banner.getElementsByTagName('p')[0]
+let banner_img = banner.getElementsByClassName("banner-img")[0]
 
 
 
