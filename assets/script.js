@@ -20,7 +20,6 @@ const slides = [
 
 
 
-
 const left_slide = document.getElementsByClassName("arrow_left");
 console.log('arrow_left');
 left_slide[0].addEventListener('click', () => {
@@ -30,3 +29,25 @@ const right_slide = document.getElementsByClassName("arrow_right");
 console.log('arrow_right');
 right_slide[0].addEventListener('click', () => {
 	console.log(1)})
+
+
+	// creation dot
+const dots = document.getElementsByClassName("dots")[0];
+const dot_list = document.getElementsByClassName("dot");
+if (dots) {
+	for (let index = 0; index < slides.length; index++) {
+		const dot = document.createElement("div")
+		dot.className = 'dot'
+		dots.appendChild(dot)
+	}
+	// event click dot
+	if (dot_list) {
+		dot_list[0].classList.add('dot_selected')
+		for (let index = 0; index < dot_list.length; index++) {
+			dot_list[index].addEventListener("click", (element) => {
+				index_slides = index
+				slide_select(index)
+			})
+		}
+	}
+}
