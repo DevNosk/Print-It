@@ -20,6 +20,7 @@ const slides = [
 
 
 
+
 const left_slide = document.getElementsByClassName("arrow_left");
 console.log('arrow_left');
 left_slide[0].addEventListener('click', () => {
@@ -50,4 +51,16 @@ if (dots) {
 			})
 		}
 	}
+}
+
+function slide_select(slider_load) {
+	for (let dot_index = 0; dot_index < dot_list.length; dot_index++) {
+		dot_list[dot_index].classList.remove("dot_selected")
+	}
+	dot_list[slider_load].classList.add("dot_selected")
+	index_slides = slider_load
+
+	banner_img.src = "assets/images/slideshow/" + slides[slider_load].image
+
+	tagLine.innerHTML = slides[slider-index].tagLine
 }
