@@ -16,7 +16,7 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-
+// Variable
 let index_slides = 0
 let banner = document.getElementById("banner")
 let tagLine = banner.getElementsByTagName('p')[0]
@@ -24,19 +24,35 @@ let banner_img = banner.getElementsByClassName("banner-img")[0]
 
 
 
-
+// Arrow left
 const left_slide = document.getElementsByClassName("arrow_left");
 console.log('arrow_left');
-left_slide[0].addEventListener('click', () => {
-	console.log(-1)})
 
+// event click left arrow
+left_slide[0].addEventListener('click', () => {
+	if (index_slides > 0) {
+		index_slides = index_slides - 1
+	} else {
+		index_slides = slides.length - 1
+	}
+	slide_select(index_slides)
+})
+
+// Arrow right
 const right_slide = document.getElementsByClassName("arrow_right");
 console.log('arrow_right');
+
+// event click right arrow
 right_slide[0].addEventListener('click', () => {
-	console.log(1)})
+	if (index_slides >= slides.length - 1) {
+		index_slides = 0
+	} else {
+		index_slides = index_slides + 1
+	}
+	slide_select(index_slides)
+})
 
-
-	// creation dot
+// creation dot
 const dots = document.getElementsByClassName("dots")[0];
 const dot_list = document.getElementsByClassName("dot");
 if (dots) {
@@ -57,6 +73,7 @@ if (dots) {
 	}
 }
 
+// Fonctions
 function slide_select(slider_load) {
 	for (let dot_index = 0; dot_index < dot_list.length; dot_index++) {
 		dot_list[dot_index].classList.remove("dot_selected")
