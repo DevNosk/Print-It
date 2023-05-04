@@ -1,3 +1,4 @@
+// Définition de la liste des diapositives
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -16,19 +17,15 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-// Variable
+
+// Initialisation de l'index de la diapositive et récupération des éléments HTML
 let index_slides = 0
 let banner = document.getElementById("banner")
 let tagLine = banner.getElementsByTagName('p')[0]
 let banner_img = banner.getElementsByClassName("banner-img")[0]
 
-
-
-// Arrow left
+// Récupération de la flèche gauche et ajout d'un événement de clic
 const left_slide = document.getElementsByClassName("arrow_left");
-console.log('arrow_left');
-
-// event click left arrow
 left_slide[0].addEventListener('click', () => {
 	if (index_slides > 0) {
 		index_slides = index_slides - 1
@@ -38,11 +35,8 @@ left_slide[0].addEventListener('click', () => {
 	slide_select(index_slides)
 })
 
-// Arrow right
+// Récupération de la flèche droite et ajout d'un événement de clic
 const right_slide = document.getElementsByClassName("arrow_right");
-console.log('arrow_right');
-
-// event click right arrow
 right_slide[0].addEventListener('click', () => {
 	if (index_slides >= slides.length - 1) {
 		index_slides = 0
@@ -52,7 +46,7 @@ right_slide[0].addEventListener('click', () => {
 	slide_select(index_slides)
 })
 
-// creation dot
+// Création des points de navigation
 const dots = document.getElementsByClassName("dots")[0];
 const dot_list = document.getElementsByClassName("dot");
 if (dots) {
@@ -61,7 +55,7 @@ if (dots) {
 		dot.className = 'dot'
 		dots.appendChild(dot)
 	}
-	// event click dot
+	// Ajout d'un événement de clic sur chaque point
 	if (dot_list) {
 		dot_list[0].classList.add('dot_selected')
 		for (let index = 0; index < dot_list.length; index++) {
@@ -73,7 +67,7 @@ if (dots) {
 	}
 }
 
-// Fonctions
+// Fonction de sélection de la diapositive
 function slide_select(slider_load) {
 	for (let dot_index = 0; dot_index < dot_list.length; dot_index++) {
 		dot_list[dot_index].classList.remove("dot_selected")
@@ -83,5 +77,5 @@ function slide_select(slider_load) {
 
 	banner_img.src = "assets/images/slideshow/" + slides[slider_load].image
 
-	tagLine.innerHTML = slides[slider-index].tagLine
+	tagLine.innerHTML = slides[slider_load].tagLine
 }
